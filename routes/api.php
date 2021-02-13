@@ -1,19 +1,42 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CurrenciesController;
+use App\Http\Controllers\WalletsController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\FundsController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::get('countries', [CountriesController::class, 'index']);
+Route::group(
+    ['namespace' => 'Auth'], 
+    function () {
+        Route::get('logout', [LoginController::class, 'logout']);
+        Route::post('register', [RegisterController::class, 'register']);
+        Route::post('login', [LoginController::class, 'login']);
+    }
+);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(
+    [
+        'namespace' => 'Auth', 
+        'middleware', 'auth:api'
+    ], 
+    function () {
+        Route::get('send-two-factor-token', [LoginController::class, 'sendtwoFactorToken']);
+        Route::post('post-two-factor-token', [LoginController::class, 'postTwoFactorToken']);
+    }
+);
+
+Route::group(
+    ['middleware' => 'auth:api'],
+    function () {
+        Route::get('currencies', [CurrenciesController::class, 'index']);
+        Route::get('wallets/{wallet}/transactions', [WalletsController::class, 'getTransactions']);
+        Route::apiResource('wallets', WalletsController::class)->only(['index', 'store', 'destroy']);
+        Route::apiResource('wallet.address', AddressController::class)->only(['index','store']);
+        Route::apiResource('wallet.fund', FundsController::class)->only(['index', 'store']);
+    }
+);
