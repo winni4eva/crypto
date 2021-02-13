@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel-notification-channels/twilio": "^3.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "neto737/bitgosdk-php": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

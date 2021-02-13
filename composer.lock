@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7864b8652b98d5b7e4868ad5e020d678",
+    "content-hash": "d0cdd0e278e557033601be37cfb3801e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1640,6 +1640,58 @@
                 }
             ],
             "time": "2021-02-11T18:30:17+00:00"
+        },
+        {
+            "name": "neto737/bitgosdk-php",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neto737/BitGoSDK-PHP.git",
+                "reference": "639c176003785db2aa933ba36ec1c328364c7d37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neto737/BitGoSDK-PHP/zipball/639c176003785db2aa933ba36ec1c328364c7d37",
+                "reference": "639c176003785db2aa933ba36ec1c328364c7d37",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-curl": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "neto737\\BitGoSDK\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Neto Melo",
+                    "email": "neto737@live.com"
+                }
+            ],
+            "description": "A BitGo SDK written in PHP",
+            "keywords": [
+                "bitcoin",
+                "bitgo",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/neto737/BitGoSDK-PHP/issues",
+                "source": "https://github.com/neto737/BitGoSDK-PHP/tree/2.2.2"
+            },
+            "funding": [
+                {
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-02-28T19:35:03+00:00"
         },
         {
             "name": "nikic/php-parser",
