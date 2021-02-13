@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Exceptions\InvalidCredentialsException;
 
 class Handler extends ExceptionHandler
 {
@@ -33,8 +34,8 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (InvalidCredentialsException $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
         });
     }
 }

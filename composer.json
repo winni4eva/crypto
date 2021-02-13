@@ -15,7 +15,8 @@
         "laravel-notification-channels/twilio": "^3.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "neto737/bitgosdk-php": "*"
+        "neto737/bitgosdk-php": "*",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
