@@ -1,4 +1,4 @@
-## React / Laravel - Blockhain Wallet Management App 
+## Vue / Laravel - Blockhain Wallet Management App 
 A simple application that helps you manage your crypto currency wallets using Bitgo
 
 ## Setup
