@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Funds as FundsRequest;
 use Facades\App\Services\Blockchain\BlockChainService;
-use App\Wallet;
+use App\Models\Wallet;
 
 class FundsController extends Controller
 {

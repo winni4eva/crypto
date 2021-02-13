@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Wallet as WalletRequest;
 use App\Services\Wallet\WalletService;
 use App\Services\Address\AddressService;
-use App\Wallet;
+use App\Models\Wallet;
 
 class WalletsController extends Controller
 {
