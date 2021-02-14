@@ -2,8 +2,8 @@
 
 namespace App\Services\Address;
 
-use App\Address;
-use App\Wallet;
+use App\Models\Address;
+use App\Models\Wallet;
 
 class AddressService
 {

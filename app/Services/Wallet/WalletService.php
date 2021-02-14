@@ -2,8 +2,8 @@
 
 namespace App\Services\Wallet;
 
-use App\Wallet;
-use App\Currency;
+use App\Models\Wallet;
+use App\Models\Currency;
 use App\Services\Blockchain\BlockChainService;
 use Facades\App\Services\CurrencyConverter\CurrencyConverterService;
 

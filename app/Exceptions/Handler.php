@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use App\Exceptions\InvalidCredentialsException;
+use NotificationChannels\Twilio\Exceptions\CouldNotSendNotification;
+use Twilio\Exceptions\RestException;
 
 class Handler extends ExceptionHandler
 {
@@ -36,6 +38,14 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (InvalidCredentialsException $e) {
             return response()->json(['error' => $e->getMessage()], 401);
+        });
+
+        $this->renderable(function(CouldNotSendNotification $e) {
+          return response()->json(['error' => $e->getMessage()], 403);
+        });
+
+        $this->renderable(function(RestException $e) {
+          return response()->json(['error' => $e->getMessage()], 403);
         });
     }
 }
