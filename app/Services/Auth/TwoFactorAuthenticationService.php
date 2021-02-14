@@ -3,7 +3,7 @@
 namespace App\Services\Auth;
 
 use App\Notifications\TwoFactorVerficationNotification;
-use App\User;
+use App\Models\User;
 
 class TwoFactorAuthenticationService {
 

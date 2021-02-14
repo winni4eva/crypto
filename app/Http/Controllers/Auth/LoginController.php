@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Exceptions\InvalidCredentialsException;
 use Facades\App\Services\Auth\TwoFactorAuthenticationService;
+use JWTAuth;
 
 class LoginController extends Controller
 {
@@ -49,8 +50,8 @@ class LoginController extends Controller
         $this->validator(request()->all())->validate();
 
         $credentials = request(['email', 'password']);
-
-        if (! $token = auth()->attempt($credentials)) {
+        
+        if (! $token = JWTAuth::attempt($credentials)) {
             throw new InvalidCredentialsException(401);
         }
 
@@ -126,7 +127,8 @@ class LoginController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            //'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
         ]);
     }
 
