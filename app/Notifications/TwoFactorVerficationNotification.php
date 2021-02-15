@@ -51,7 +51,7 @@ class TwoFactorVerficationNotification extends Notification implements ShouldQue
             ->subject('QHCoin - Two Factor Code')
             ->greeting("Hi {$notifiable->first_name}")
             ->level('info')
-            ->line("Your Two Factor Code: {$notifiable->token_2fa}")
+            ->line("Your Two Factor Authentication Code Is: {$notifiable->token_2fa}")
             ->line('Thank you for using our application!')
             ->salutation('Best wishes');
     }
