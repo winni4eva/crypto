@@ -54,7 +54,7 @@ class WalletsController extends Controller
         $wallet = $this->walletService->createWallet();
 
         if(!$wallet) {
-            return response()->json(['message' => 'Error creating wallet'], 422);
+            return response()->json(['message' => 'Error creating wallet'], config('http-status-codes.ERROR'));
         }
 
         $this->walletService->saveWallet($wallet, $passphrase);
@@ -62,7 +62,7 @@ class WalletsController extends Controller
         $addresses = $this->walletService->getWalletAddresses();
 
         if(!$addresses) {
-            return response()->json(['message' => 'Error fetching wallet address'], 422);
+            return response()->json(['message' => 'Error fetching wallet address'], config('http-status-codes.ERROR'));
         }
 
         $this->addressService->saveAddresses($addresses['addresses'], $wallet['id']);
@@ -70,7 +70,10 @@ class WalletsController extends Controller
         $addressId = collect($addresses['addresses'])->first()['id'];
         $this->walletService->updateWalletAddress($addressId, $passphrase);
 
-        return response()->json(['success' => 'Wallet created successfully']);
+        return response()->json(
+          ['message' => 'Wallet created successfully'], 
+          config('http-status-codes.CREATED')
+        );
     }
 
     /**
@@ -95,7 +98,7 @@ class WalletsController extends Controller
 
         if(collect($response)->has('error') || !$response) {
             $message = $response['error'] ?? 'Failed fetching transactions';
-            return response()->json(['message' => $message], 422);
+            return response()->json(['message' => $message], config('http-status-codes.ERROR'));
         }
 
         return response()->json(['transactions'=> $response]);
